@@ -1,0 +1,19 @@
+<!-- filtros -->
+<div class="row">
+  <div class="col-xs-6">
+    <h1>Atenciones para realizar por fecha  </h1>
+    <!-- -->
+    <app-fecha (filtrosAplicados)="AplicarFiltros($event)" [defaultDate]="DiaConsultado" ></app-fecha>
+    <!-- tabla de reservas del dia -->
+    <app-tabla-atenciones  [atenciones]="Atenciones" [dia]="DiaConsultado"
+      (marcarAsistencia)="MarcarAsistencia($event)" (marcarFalta)="MarcarFalta($event)">
+    </app-tabla-atenciones>
+  </div>
+  <div class="col-xs-4">
+    <!-- reseña -->
+    <app-resena [iturnoid]="TurnoResenado" (guardarResena)="GuardarResena($event)" *ngIf="MostrarResena"></app-resena>
+  </div>
+  <div class="col-xs-1"></div>
+</div>
+
+

@@ -1,0 +1,31 @@
+<table>
+  <title>Turnos Reservados</title>
+
+  <thead>
+    <tr>
+      <th>Horario</th>
+      <th>Especialista</th>
+      <th>Acciones</th>
+    </tr>
+  </thead> <!-- semana -->
+  <caption>Día {{ Dia | date:'dd-MM-yyyy' }}  </caption>
+  <tbody>
+    <tr *ngFor="let iturnoid of Reservas | async ">
+      <!-- Horario  mostrar  -->
+      <td class="hora">{{ iturnoid.turno.time | timestr | date:'dd-MM HH:mm' }}</td>
+      <td>{{ iturnoid.turno.especialistaNombre }}</td>
+      <td>
+        <app-reservas-accion
+        [clienteUID]="ClienteUID"
+        [iturnoid]="iturnoid"
+        (completarEncuesta)="CompletarEncuesta($event)"
+        (cancelarTurno)="CancelarTurno($event)"
+        >
+
+        </app-reservas-accion>
+      </td>
+    </tr>
+  </tbody>
+
+
+</table>

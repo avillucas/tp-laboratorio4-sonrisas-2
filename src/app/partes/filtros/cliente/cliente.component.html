@@ -1,0 +1,19 @@
+<form [formGroup]="FiltroForm">
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- -->
+      <div class="form-group has-feedback">
+        <label class=""><span class="glyphicon glyphicon-lock"></span>Seleccione un Cliente*</label>
+        <select name="tipo" [formControl]="ClientesControl" (change)="Filtrar()">
+          <option *ngFor="let cliente of Clientes | async " [ngValue]="cliente">
+            {{ cliente.usuario.Nombre  }}
+          </option>
+        </select>
+        <div *ngIf="ClienteInput.invalid && (ClienteInput.dirty || ClienteInput.touched )"
+          class="alert alert-danger">
+          <div *ngIf="ClienteInput.hasError('required')">Seleccione un especialista</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

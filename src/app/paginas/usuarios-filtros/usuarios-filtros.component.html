@@ -1,0 +1,8 @@
+<form [formGroup]="FiltroForm" >
+<div class="form-group has-feedback">
+  <span class="glyphicon glyphicon-lock form-control-feedback">Filtro por tipo de Usuario</span>
+  <select  name="tipo" [formControl]="TipoControl"  (change)="Filtrar()"  >
+      <option *ngFor="let tipoUsuario of TiposUsuario" [value]="tipoUsuario">{{ tipoUsuario | tipousuario }}</option>
+  </select>
+</div>
+</form>

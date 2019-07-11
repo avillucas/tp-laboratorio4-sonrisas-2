@@ -1,0 +1,45 @@
+<!-- encuesta -->
+<div class="row">
+    <div class="col-xs-8">
+      <app-encuesta *ngIf="!OcultarEncuestas" [iturnoid]="TurnoEncuestado" (guardarEncuesta)="GuardarEncuesta($event)"></app-encuesta>
+    </div>
+</div>
+<div class="row">
+  <div class="col-xs-6">
+      <h1> Mis reservas</h1>
+      <!-- Mis resevados -->
+      <app-tabla-reservas *ngIf="!OcultarTablaReservas"
+      [clienteUID]="CurrentUID"
+        (cancelarTurno)="CancelarTurno($event)"
+        (completarEncuesta)="SolicitarEncuesta($event)"
+        [reservas]="Reservas">
+      </app-tabla-reservas>
+  </div>
+  <div class="col-xs-6">
+    <div class="row">
+      <div class="col-xs-12">
+        <h1>Reservar un nuevo Turno</h1>
+        <!-- filtros -->
+        <app-especialista (filtrosAplicados)="EspecialistaSeleccionado($event)"></app-especialista>
+        <!-- -->
+        <app-fecha (filtrosAplicados)="AplicarFiltros($event)" [hidden]="OcultarSelectorFechas"></app-fecha>
+        <!-- -->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <!-- Tabla de turnos disponibles -->
+        <app-tabla-turnos
+        *ngIf="!OcultarTablaTurnos"
+        [turnos]="Turnos"
+        [dia]="DiaConsultado"
+        [clienteUID]="CurrentUID"
+        [especialista]="Especialista"
+        (reservarTurno)="ReservarTurno($event)"
+        (cancelarTurno)="CancelarTurno($event)"
+        ></app-tabla-turnos>
+      </div>
+    </div>
+  </div>
+</div>
+

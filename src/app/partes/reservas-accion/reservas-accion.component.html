@@ -1,0 +1,6 @@
+<span [ngSwitch]="AccionDisponible">
+  <button *ngSwitchCase="'encuesta'" (click)="CompletarEncuesta(iturnoid)">Completar Encuesta</button>
+  <button *ngSwitchCase="'cancelar'" (click)="CancelarTurno(iturnoid)">Cancelar Turno</button>
+  <span *ngSwitchCase="'encuestado'" class="encuestado">Encuesta Completa</span>
+  <span *ngSwitchDefault class="noasistio">No Asistio</span>
+</span>

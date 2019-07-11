@@ -1,0 +1,21 @@
+<h1> Generar Turnos disponibles para ser reservados </h1>
+<!-- filtros -->
+<div class="row">
+  <div class="col-xs-12">
+    <!-- -->
+    <app-especialista (filtrosAplicados)="EspecialistaSeleccionado($event)"></app-especialista>
+    <!-- -->
+    <app-consultorio (filtrosAplicados)="ConsultorioSeleccionado($event)" [hidden]="OcultarSelectorConsultorio">
+    </app-consultorio>
+    <!-- -->
+    <app-fecha (filtrosAplicados)="FechaSeleccionada($event)" [hidden]="OcultarSelectorFechas"></app-fecha>
+
+  </div>
+</div>
+
+<div class="row" *ngIf="MostrarCarga">
+  <h1>Realizar carga disponibles </h1>
+  <p>Cargar Turnos del especilista {{ Especialista.usuario.Nombre }} para el dia {{ DiaConsultado | date :'dd-MM-yyyy' }} en el
+    {{ Consultorio | consultorio }} </p>
+  <button (click)="Cargar()">Cargar</button>
+</div>

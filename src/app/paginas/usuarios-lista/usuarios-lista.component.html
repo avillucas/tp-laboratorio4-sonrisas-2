@@ -1,0 +1,23 @@
+<table>
+  <thead>
+    <th>Id</th>
+    <th>Tipo</th>
+    <th>Nombre</th>
+    <th>Email</th>
+    <th>Acciones</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let usu of Usuarios| async">
+      <td>{{ usu.id }}</td>
+      <td>{{ usu.usuario.Tipo | tipousuario }}</td>
+      <td>{{ usu.usuario.Nombre }}</td>
+      <td>{{ usu.usuario.Email }}</td>
+      <td>
+        <!--
+        <button (click)="Borrar(usu)">Borrar</button>
+        -->
+        <button *ngIf="usu.usuario.Tipo == 2" routerLink="/especialistas">Cargar Días laborables</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,51 @@
+<div class="register-box-body">
+  <p class="login-box-msg">Completar Encuesta al respecto de su visita a la clinica</p>
+  <form [formGroup]="EncuestaForm" (ngSubmit)="Guardar()">
+    <div class="row">
+      <div class="col-xs-12">
+        <h1>Esta fue la reseña del especialista</h1>
+        <p>{{ iturnoid.turno.resena }}</p>
+        <hr />
+        <div class="form-group has-feedback">
+          <label>Por favor asigne un puntaje a la Clinica</label>
+          <select name="puntajeClinica" [formControl]="PuntajeClinicaControl">
+            <option *ngFor="let puntaje of Puntajes " [value]="puntaje">{{ puntaje }}</option>
+          </select>
+          <div *ngIf="PuntajeClinicaInput.invalid && (PuntajeClinicaInput.dirty || PuntajeClinicaInput.touched)"
+            class="alert alert-danger">
+            <div *ngIf="PuntajeClinicaInput.hasError('required')">Seleccione un valor </div>
+          </div>
+        </div>
+
+        <div class="form-group has-feedback">
+          <label>Por favor asigne un puntaje al especialista</label>
+          <select name="puntajeEspecialista" [formControl]="PuntajeEspecialistaControl">
+            <option *ngFor="let puntaje of Puntajes " [value]="puntaje">{{ puntaje }}</option>
+          </select>
+          <div
+            *ngIf="PuntajeEspecialistaInput.invalid && (PuntajeEspecialistaInput.dirty || PuntajeEspecialistaInput.touched)"
+            class="alert alert-danger">
+            <div *ngIf="PuntajeEspecialistaInput.hasError('required')">Seleccione un valor </div>
+          </div>
+        </div>
+
+
+        <div class="form-group has-feedback">
+          <label>Cuentenos su experiencia*</label>
+          <br />
+          <textarea [formControl]="ExperienciaControl" name="experiencia" cols="50" rows="15">
+              </textarea>
+          <div *ngIf="ExperienciaInput.invalid && (ExperienciaInput.dirty || ExperienciaInput.touched)"
+            class="alert alert-danger">
+            <div *ngIf="ExperienciaInput.hasError('required')">Complete con un nombre </div>
+            <div *ngIf="ExperienciaInput.hasError('minlength')">Debe tener al menos 4 caracteres</div>
+            <div *ngIf="ExperienciaInput.hasError('maxlength')">Debe tener maximo 66 caracteres</div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-flat" [disabled]="!EncuestaForm.valid">Enviar
+          Encuesta</button>
+      </div>
+    </div>
+  </form>
+</div>

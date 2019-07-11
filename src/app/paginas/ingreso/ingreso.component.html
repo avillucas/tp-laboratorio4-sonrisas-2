@@ -1,0 +1,84 @@
+<div class="h-100 bg-plum-plate bg-animation">
+  <form [formGroup]="LoginForm" (ngSubmit)="Ingresar()">
+    <div class="d-flex h-100 justify-content-center align-items-center">
+      <div class="mx-auto app-login-box col-md-8">
+        <div class="app-logo-inverse mx-auto mb-3"></div>
+        <div class="modal-dialog w-100 mx-auto">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="h5 modal-title text-center">
+                <h4 class="mt-2">
+                  <div>Bienvenido,</div>
+                  <span>Por favor ingrese.</span>
+                </h4>
+              </div>
+              <div id="exampleInputGroup1" role="group" aria-describedby="exampleInputGroup1__BV_description_"
+                class="form-group">
+                <div><input id="exampleInput1" type="email" placeholder="Ingrese Email..." required="required"
+                    aria-required="true" class="form-control" aria-describedby="exampleInputGroup1__BV_description_"
+                    [formControl]="EmailControl" name="email">
+                  <div *ngIf="EmailInput.invalid && (EmailInput.dirty || EmailInput.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="EmailInput.hasError('required')">Complete con un email </div>
+                    <div *ngIf="EmailInput.hasError('minlength')">Debe tener al menos 4 caracteres</div>
+                    <div *ngIf="EmailInput.hasError('maxlength')">Debe tener maximo 255 caracteres</div>
+                    <div *ngIf="EmailInput.hasError('pattern')">Formato de email valido</div>
+                  </div>
+                  <small tabindex="-1" id="exampleInputGroup1__BV_description_" class="form-text text-muted">No vamos a
+                    compartir su email
+                  </small>
+                </div>
+              </div>
+              <div id="exampleInputGroup2" role="group" class="form-group">
+                <div><input id="exampleInput2" type="password" placeholder="Ingrese contraseña..." required="required"
+                    aria-required="true" class="form-control" name="password" [formControl]="PasswordControl"></div>
+                <div *ngIf="PasswordInput.invalid && (PasswordInput.dirty || PasswordInput.touched)"
+                  class="alert alert-danger">
+                  <div *ngIf="PasswordInput.hasError('required')">Complete con un pasword </div>
+                  <div *ngIf="PasswordInput.hasError('minlength')">Debe tener al menos 4 caracteres</div>
+                  <div *ngIf="PasswordInput.hasError('maxlength')">Debe tener maximo 255 caracteres</div>
+                </div>
+              </div>
+
+              <strong class="login-box-msg">Seleccione un usuario por default</strong>
+              <ul>
+                <li *ngFor="let usuariodefault of UsuariosDefault"> <label>
+                    <input type="radio" name="default" value="{{usuariodefault.email}}"
+                      (click)="SeleccionDefault(usuariodefault)" />
+                    {{usuariodefault.email}}
+                  </label>
+                </li>
+              </ul>
+
+
+              <!--
+            <div class="custom-control custom-checkbox"><input id="exampleCheck" type="checkbox" name="check"
+                autocomplete="off" class="custom-control-input" value="true"><label for="exampleCheck"
+                class="custom-control-label">
+                Keep me logged in
+              </label></div>
+              -->
+              <div class="divider"></div>
+              <h6 class="mb-0">
+                ¿ No posee cuenta ?
+                <a routerLink="/registro" class="text-primary">Registrarse</a></h6>
+            </div>
+            <div class="modal-footer clearfix">
+              <!--
+            <div class="float-left"><a [routerLink]="" class="btn-lg btn btn-link">Recover
+                Password</a></div>
+                -->
+              <div class="float-right">
+                <button type="submit" class="btn btn-primary btn-lg" [disabled]="!LoginForm.valid">Ingresar</button>
+                <!-- <button type="button" class="btn btn-primary btn-lg">Login to Dashboard</button> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center text-white opacity-8 mt-3">
+          Copyright © sonrisas 2019
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

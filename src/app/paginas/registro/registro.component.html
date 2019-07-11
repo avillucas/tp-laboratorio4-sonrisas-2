@@ -1,0 +1,111 @@
+<div class="h-100 bg-premium-dark">
+  <div class="d-flex h-100 justify-content-center align-items-center">
+    <div class="mx-auto app-login-box col-md-8">
+      <div class="app-logo-inverse mx-auto mb-3"></div>
+      <form [formGroup]="RegistroForm" (ngSubmit)="Registrar()" autocomplete="off">
+        <div class="modal-dialog w-100">
+          <div class="modal-content">
+            <div class="modal-body">
+              <h5 class="modal-title">
+                <h4 class="mt-2">
+                  <div>Bienvenido,</div>
+                  <span>Esta a un paso de tener una <span class="text-success">Buena Sonrisa</span>, crea tu
+                    cuenta</span>
+                </h4>
+              </h5>
+              <div class="divider"></div>
+              <div id="exampleInputGroup1" role="group" aria-describedby="exampleInputGroup1__BV_description_"
+                class="form-group">
+                <div>
+                  <input id="exampleInput1" type="email" autocomplete="off" placeholder="Ingrese su email..." required="required"
+                    aria-required="true" class="form-control" aria-describedby="exampleInputGroup1__BV_description_"
+                    [formControl]="EmailControl" name="email">
+
+                  <small tabindex="-1" id="exampleInputGroup1__BV_description_" class="form-text text-muted">No
+                    compartiremos tu email.
+                  </small>
+                </div>
+                <div *ngIf="EmailInput.invalid && (EmailInput.dirty || EmailInput.touched)" class="alert alert-danger">
+                  <div *ngIf="EmailInput.hasError('required')">Complete con un email </div>
+                  <div *ngIf="EmailInput.hasError('minlength')">Debe tener al menos 4 caracteres</div>
+                  <div *ngIf="EmailInput.hasError('maxlength')">Debe tener maximo 255 caracteres</div>
+                  <div *ngIf="EmailInput.hasError('email')">Formato de email valido</div>
+                </div>
+              </div>
+              <div id="exampleInputGroup12" role="group" class="form-group">
+                <div>
+                  <input id="exampleInput12" type="text" autocomplete="off" placeholder="Ingrese su nombre..." required="required"
+                    aria-required="true" class="form-control" [formControl]="NombreControl" name="nombre">
+                </div>
+                <div *ngIf="NombreInput.invalid && (NombreInput.dirty || NombreInput.touched)"
+                  class="alert alert-danger">
+                  <div *ngIf="NombreInput.hasError('required')">Complete con un nombre </div>
+                  <div *ngIf="NombreInput.hasError('minlength')">Debe tener al menos 4 caracteres</div>
+                  <div *ngIf="NombreInput.hasError('maxlength')">Debe tener maximo 255 caracteres</div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div id="exampleInputGroup2" role="group" class="form-group">
+                    <div><input id="exampleInput2" autocomplete="off" type="password" placeholder="Ingrese su contraseña..."
+                        required="required" aria-required="true" class="form-control" name="password"
+                        [formControl]="PasswordControl"></div>
+                    <div *ngIf="PasswordInput.invalid && (PasswordInput.dirty || PasswordInput.touched)"
+                      class="alert alert-danger">
+                      <div *ngIf="PasswordInput.hasError('required')">Complete con un pasword </div>
+                      <div *ngIf="PasswordInput.hasError('minlength')">Debe tener al menos 4 caracteres</div>
+                      <div *ngIf="PasswordInput.hasError('maxlength')">Debe tener maximo 255 caracteres</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div id="exampleInputGroup2" role="group" class="form-group">
+                    <div>
+                      <select name="tipo" autocomplete="off" class="form-control" [formControl]="TipoControl" placeholder="Seleccione un tipo de usuario">                        
+                        <option *ngFor="let tipoUsuario of TiposUsuario "  aria-describedby="exampleInputTipo__BV_description_" [value]="tipoUsuario">{{ tipoUsuario | tipousuario }}</option>
+                      </select>
+                      <small tabindex="-1" id="exampleInputTipo__BV_description_" class="form-text text-muted">Tipo de usuario
+                      </small>
+                    </div>
+                    <div *ngIf="TipoInput.invalid && (TipoInput.dirty || TipoInput.touched)" class="alert alert-danger">
+                      <div *ngIf="TipoInput.hasError('required')">Seleccione un tipo de usuario</div>
+                    </div>
+                  </div>
+                </div>
+                <!--
+              <div class="col-md-6">
+                <div id="exampleInputGroup2" role="group" class="form-group">
+                  <div><input id="exampleInput2" type="password" placeholder="Repeat password..." required="required"
+                      aria-required="true" class="form-control"></div>
+                </div>
+              </div>
+            -->
+              </div>
+              <!--
+            <div class="custom-control custom-checkbox"><input id="exampleCheck" type="checkbox" name="check"
+                autocomplete="off" class="custom-control-input" value="true"><label for="exampleCheck"
+                class="custom-control-label">
+                Accept our <a [routerLink]="">Terms and Conditions</a>.
+              </label></div>
+            -->
+              <div class="divider"></div>
+              <h6 class="mb-0">
+                ¿Ya tiene una cuenta?
+                <a routerLink="/ingreso" class="text-primary">Ingresar</a>
+                <!-- | <a [routerLink]="" class="text-primary">Recover Password</a> -->
+              </h6>
+            </div>
+            <div class="modal-footer d-block text-center">
+              <button type="submit" class="btn btn-wide btn-pill btn-shadow btn-hover-shine btn-secondary btn-lg" [disabled]="!RegistroForm.valid"  >Registrar </button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="text-center text-white opacity-8 mt-3">
+        Copyright © Sonrisas 2019
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+<span [ngSwitch]="AccionDisponible">
+  <button *ngSwitchCase="'reservar'" (click)="ReservarTurno(iturnoid)" class="btnReservar" >Reservar Turno</button>
+  <button *ngSwitchCase="'cancelar'" (click)="CancelarTurno(iturnoid)" class="btnCancelar" >Cancelar Turno</button>
+  <span *ngSwitchCase="'reservado'" class="reservado">Reservado</span>
+  <span *ngSwitchDefault class="nodisponible" >No Disponible</span>
+</span>

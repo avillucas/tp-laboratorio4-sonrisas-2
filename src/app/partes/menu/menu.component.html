@@ -1,0 +1,48 @@
+<aside class="main-sidebar" *ngIf="Iusuario | async as usuario">
+  <section class="sidebar">
+    <ul class="sidebar-menu">
+      <li>
+        <a routerLink="/">
+          <i class=" fa fa-th"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/usuarios" *ngIf="usuario.tipo === 3">
+          <i class=" fa fa-user"></i>
+          <span>Usuarios</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/especialistas" *ngIf="usuario.tipo === 3" >
+          <i class=" fa fa-user-md"></i>
+          <span>Especialistas</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/turnos-recepcionista" *ngIf="usuario.tipo === 1" >
+          <i class=" fa fa-calendar-check-o"></i>
+          <span>Turnos</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/turnos-especialista" *ngIf="usuario.tipo === 2" >
+          <i class=" fa fa-calendar-check-o"></i>
+          <span>Turnos</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/turnos" *ngIf="usuario.tipo === 0" >
+          <i class=" fa fa-calendar-check-o"></i>
+          <span>Turnos</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/mi-cuenta">
+          <i class=" fa fa-id-card"></i>
+          <span>Mi Cuenta</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+</aside>

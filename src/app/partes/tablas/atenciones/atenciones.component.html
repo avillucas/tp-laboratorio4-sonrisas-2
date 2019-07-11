@@ -1,0 +1,25 @@
+<table>
+  <caption>Atenciones del dia {{ Dia | date:'dd-MM-yyyy' }} </caption>
+  <thead>
+    <tr>
+      <th>Horario</th>
+      <th>Paciente</th>
+      <th>Acciones</th>
+    </tr>
+  </thead> <!-- semana -->
+  <tbody>
+    <tr *ngFor="let iturnoid of Atenciones | async ">
+      <!-- Horario  mostrar  -->
+      <td class="hora">{{ iturnoid.turno.time | timestr | date:'HH:mm' }}</td>
+      <td>{{ iturnoid.turno.clienteNombre }}</td>
+      <td [ngSwitch]="AccionDisponibleMostrar(iturnoid)">
+        <button *ngSwitchCase="'vigente'" (click)="MarcarAsistencia(iturnoid)" class="btnAsistencia">Marcar Asistencia</button>
+        <button *ngSwitchCase="'vigente'" (click)="MarcarFalta(iturnoid)"  class="btnFalta" >Marcar Falta</button>
+        <span *ngSwitchCase="'resenado'" class="resenado" title="Reseña: {{ iturnoid.turno.resena}}" >Reseña</span>
+        <span *ngSwitchDefault class="nodisponible">No Asistio</span>
+      </td>
+    </tr>
+  </tbody>
+
+
+</table>

@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h1> Operar como el paciente </h1>
+    <app-cliente (filtrosAplicados)="ClienteSeleccionado($event)"></app-cliente>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-6" *ngIf="MostrarReservaTurnos">
+    <div class="row">
+      <div class="col-xs-12">
+        <h1>Reservar un nuevo Turno</h1>
+        <!-- filtros -->
+        <app-especialista (filtrosAplicados)="EspecialistaSeleccionado($event)" >
+        </app-especialista>
+        <!-- -->
+        <app-fecha (filtrosAplicados)="AplicarFiltros($event)" [hidden]="OcultarSelectorFechas"></app-fecha>
+        <!-- -->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <!-- Tabla de turnos disponibles -->
+        <app-tabla-turnos *ngIf="!OcultarTablaTurnos" [turnos]="Turnos" [dia]="DiaConsultado" [clienteUID]="Cliente.id"
+          [especialista]="Especialista" (reservarTurno)="ReservarTurno($event)" (cancelarTurno)="CancelarTurno($event)">
+        </app-tabla-turnos>
+      </div>
+    </div>
+  </div>
+</div>
