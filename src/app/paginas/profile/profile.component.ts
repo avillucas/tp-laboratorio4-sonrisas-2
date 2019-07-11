@@ -16,6 +16,10 @@ import { switchMap, finalize } from 'rxjs/operators';
 })
 export class ProfileComponent implements OnInit {
 
+  heading = 'Mi Cuenta';
+  subheading = 'Edita tus datos personales.';
+  icon = 'pe-7s-display1 icon-gradient bg-premium-dark';
+
   public NombreControl: FormControl;
   public ProfileForm: FormGroup;
   private porcentajeSubida: number;

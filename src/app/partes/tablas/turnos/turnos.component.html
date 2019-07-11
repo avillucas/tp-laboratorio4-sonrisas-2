@@ -1,29 +1,29 @@
-<table>
-  <title>Turnos Disponibles</title>
-
-  <thead>
-    <tr>
-      <th>Horario</th>
-      <th>Consultorio</th>
-      <th>Acciones</th>
-    </tr>
-  </thead> <!-- semana -->
-  <caption>Día {{ Dia | date:'dd-MM-yyyy' }} con el especialista {{ Especialista.usuario.Nombre }} </caption>
-  <tbody>
-    <tr *ngFor="let iturnoid of Turnos | async ">
-      <!-- Horario  mostrar  -->
-      <td class="hora">{{ iturnoid.turno.time | timestr | date:'HH:mm:ss' }}</td>
-      <td>{{ iturnoid.turno.consultorio }}</td>
-      <td>
-      <app-turnos-accion
-        [iturnoid]="iturnoid"
-        [clienteUID]="ClienteUID"
-        (reservarTurno)="ReservarTurno($event)"
-        (cancelarTurno)="CancelarTurno($event)"
-        ></app-turnos-accion>
-      </td>
-    </tr>
-  </tbody>
-
-
-</table>
+<div class="main-card mb-3 card">
+  <div class="card-header">
+    Turnos Disponibles para el {{ Dia | date:'dd-MM-yyyy' }}
+  </div>
+  <div class="table-responsive">
+    <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+      <thead>
+        <tr>
+          <th class="text-center">Horario</th>
+          <th>Especialista</th>
+          <th class="text-center">Consultorio</th>          
+          <th class="text-center">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let iturnoid of Turnos | async ">
+          <!-- Horario  mostrar  -->
+          <td class="hora">{{ iturnoid.turno.time | timestr | date:'HH:mm:ss' }}</td>          
+          <td>{{ iturnoid.turno.especialistaNombre }}</td>          
+          <td class="text-center" >{{ iturnoid.turno.consultorio }}</td>
+          <td class="text-center">
+            <app-turnos-accion [iturnoid]="iturnoid" [clienteUID]="ClienteUID" (reservarTurno)="ReservarTurno($event)"
+              (cancelarTurno)="CancelarTurno($event)"></app-turnos-accion>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

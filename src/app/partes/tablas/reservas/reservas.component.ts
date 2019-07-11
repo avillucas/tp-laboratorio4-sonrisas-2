@@ -24,6 +24,7 @@ export class ReservasComponent implements OnInit {
   @Output() completarEncuesta = new EventEmitter();
 
   constructor() {
+    this.dia = new Date();
   }
 
   get Dia(): Date {

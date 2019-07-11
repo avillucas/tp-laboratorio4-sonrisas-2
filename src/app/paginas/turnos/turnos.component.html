@@ -1,24 +1,23 @@
+<app-page-title [heading]="heading" [subheading]="subheading" [icon]="icon"></app-page-title>
 <!-- encuesta -->
 <div class="row">
-    <div class="col-xs-8">
-      <app-encuesta *ngIf="!OcultarEncuestas" [iturnoid]="TurnoEncuestado" (guardarEncuesta)="GuardarEncuesta($event)"></app-encuesta>
-    </div>
+  <div class="col-xs-8">
+    <app-encuesta *ngIf="!OcultarEncuestas" [iturnoid]="TurnoEncuestado" (guardarEncuesta)="GuardarEncuesta($event)">
+    </app-encuesta>
+  </div>
 </div>
 <div class="row">
-  <div class="col-xs-6">
-      <h1> Mis reservas</h1>
-      <!-- Mis resevados -->
-      <app-tabla-reservas *ngIf="!OcultarTablaReservas"
-      [clienteUID]="CurrentUID"
-        (cancelarTurno)="CancelarTurno($event)"
-        (completarEncuesta)="SolicitarEncuesta($event)"
-        [reservas]="Reservas">
-      </app-tabla-reservas>
+  <div class="col-md-6">
+    <h6 class="mb-3">Mis reservas</h6>
+    <!-- Mis resevados -->
+    <app-tabla-reservas *ngIf="!OcultarTablaReservas" [clienteUID]="CurrentUID" (cancelarTurno)="CancelarTurno($event)"
+      (completarEncuesta)="SolicitarEncuesta($event)" [reservas]="Reservas">
+    </app-tabla-reservas>
   </div>
-  <div class="col-xs-6">
-    <div class="row">
-      <div class="col-xs-12">
-        <h1>Reservar un nuevo Turno</h1>
+  <div class="col-md-6">
+    <div class="main-card mb-3 card">
+      <div class="card-body">
+        <h5 class="card-title">Reservar un nuevo turno</h5>
         <!-- filtros -->
         <app-especialista (filtrosAplicados)="EspecialistaSeleccionado($event)"></app-especialista>
         <!-- -->
@@ -26,20 +25,9 @@
         <!-- -->
       </div>
     </div>
-    <div class="row">
-      <div class="col-xs-12">
-        <!-- Tabla de turnos disponibles -->
-        <app-tabla-turnos
-        *ngIf="!OcultarTablaTurnos"
-        [turnos]="Turnos"
-        [dia]="DiaConsultado"
-        [clienteUID]="CurrentUID"
-        [especialista]="Especialista"
-        (reservarTurno)="ReservarTurno($event)"
-        (cancelarTurno)="CancelarTurno($event)"
-        ></app-tabla-turnos>
-      </div>
-    </div>
+    <!-- Tabla de turnos disponibles -->
+    <app-tabla-turnos *ngIf="!OcultarTablaTurnos" [turnos]="Turnos" [dia]="DiaConsultado" [clienteUID]="CurrentUID"
+      [especialista]="Especialista" (reservarTurno)="ReservarTurno($event)" (cancelarTurno)="CancelarTurno($event)">
+    </app-tabla-turnos>
   </div>
 </div>
-

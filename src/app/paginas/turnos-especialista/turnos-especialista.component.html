@@ -1,19 +1,20 @@
+<app-page-title [heading]="heading" [subheading]="subheading" [icon]="icon"></app-page-title>
 <!-- filtros -->
 <div class="row">
-  <div class="col-xs-6">
-    <h1>Atenciones para realizar por fecha  </h1>
-    <!-- -->
-    <app-fecha (filtrosAplicados)="AplicarFiltros($event)" [defaultDate]="DiaConsultado" ></app-fecha>
+  <div class="col-md-6">
+    <div class="main-card mb-3 card">
+      <div class="card-body">
+        <h5 class="card-title">Filtrar las reservas para el dia</h5>
+        <!-- -->
+        <app-fecha (filtrosAplicados)="AplicarFiltros($event)" [defaultDate]="DiaConsultado"></app-fecha>
+      </div>
+    </div>
     <!-- tabla de reservas del dia -->
-    <app-tabla-atenciones  [atenciones]="Atenciones" [dia]="DiaConsultado"
-      (marcarAsistencia)="MarcarAsistencia($event)" (marcarFalta)="MarcarFalta($event)">
-    </app-tabla-atenciones>
+    <app-tabla-atenciones [atenciones]="Atenciones" [dia]="DiaConsultado" (marcarAsistencia)="MarcarAsistencia($event)"
+      (marcarFalta)="MarcarFalta($event)"> </app-tabla-atenciones>
   </div>
-  <div class="col-xs-4">
-    <!-- reseña -->
+  <div class="col-md-6">
     <app-resena [iturnoid]="TurnoResenado" (guardarResena)="GuardarResena($event)" *ngIf="MostrarResena"></app-resena>
   </div>
-  <div class="col-xs-1"></div>
 </div>
-
-
+<!-- reseña -->

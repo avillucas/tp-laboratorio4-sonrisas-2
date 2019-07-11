@@ -16,6 +16,10 @@ import { Usuario } from '../../clases/usuario';
 })
 export class TurnosEspecialistaComponent implements OnInit {
 
+  heading = 'Turnos';
+  subheading = 'Turnos reservados por clientes';
+  icon = 'pe-7s-display1 icon-gradient bg-premium-dark';
+
   private diaConsultado: Date;
   private atenciones: Observable<ITurnoId[]>;
   private especialista: IUsuarioId;

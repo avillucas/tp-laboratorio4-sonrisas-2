@@ -78,7 +78,7 @@ const routes: Routes = [
       { path: 'turnos', component: TurnosComponent, canActivate: [AuthGuard, IsClienteGuard] },
       { path: 'turnos-especialista', component: TurnosEspecialistaComponent, canActivate: [AuthGuard, IsEspecialistaGuard] },
       { path: 'turnos-recepcionista', component: TurnosRecepcionistaComponent, canActivate: [AuthGuard, IsRecepcionistaGuard] },
-      { path: 'mi-cuenta', component: ProfileComponent, canActivate: [AuthGuard] },
+      { path: 'mi-cuenta', component: ProfileComponent, canActivate: [AuthGuard] , data: { extraParameter: 'formElementsMenu' }},
       { path: 'usuarios', component: UsuariosComponent, canActivate: [AuthGuard, IsAdminGuard] },
       { path: 'especialistas/:UID', component: EspecialistasComponent, canActivate: [AuthGuard, IsAdminGuard] },
       { path: 'especialistas', component: EspecialistasComponent, canActivate: [AuthGuard, IsAdminGuard] },

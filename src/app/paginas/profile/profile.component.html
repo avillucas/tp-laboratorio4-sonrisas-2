@@ -1,40 +1,49 @@
+<app-page-title [heading]="heading" [subheading]="subheading" [icon]="icon"></app-page-title>
 <div class="row" *ngIf="Iusuario | async as usuario">
-  <div class="col-xs-2"></div>
-  <div class="col-xs-6">
-    <p class="login-box-msg">Mi Cuenta</p>
-    <ul>
-      <li><strong>Tipo de usuario:</strong> {{ usuario.tipo |  tipousuario }}</li>
-      <li><strong>Email:</strong> {{usuario.email  }}</li>
-    </ul>
-    <form [formGroup]="ProfileForm" (ngSubmit)="GuardarMiCuenta()">
-      <!-- nombre -->
-      <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Nombre" [formControl]="NombreControl" name="nombre"
-          value="{{usuario.nombre}}">
-        <div *ngIf="NombreInput.invalid && (NombreInput.dirty || NombreInput.touched)" class="alert alert-danger">
-          <div *ngIf="NombreInput.hasError('required')">Complete con un nombre </div>
-          <div *ngIf="NombreInput.hasError('minlength')">Debe tener al menos 4 caracteres</div>
-          <div *ngIf="NombreInput.hasError('maxlength')">Debe tener maximo 255 caracteres</div>
-        </div>
-      </div>
-      <!-- -->
-      <button type="submit" class="btn btn-primary btn-block btn-flat" [disabled]="!ProfileForm.valid">Guardar</button>
-    </form>
-  </div>
-  <div class="col-xs-3">
-    <h1>Avatar</h1>
-    <img src="{{ usuario.profileImage }}" />
-    <!-- avatar -->
-    <div class="form-group has-feedback">
-      <label>Seleccione una imagen para cambiar el avatar</label>
-      <input type="file" name="avatar" (change)="DefinirAvatar($event)" accept=".png,.jpg">
-      <div class="progreso" *ngIf="this.sService.uploadPercent | async; let porcentaje ">
-        <div *ngIf="porcentaje != 0 && porcentaje != 100">
-          <progress max="100" [value]="(this.sService.uploadPercent | async)"></progress>
-          <span> {{ porcentaje }}%</span>
-        </div>
+  <div class="col-md-6">
+    <div class="main-card mb-3 card">
+      <div class="card-body">
+        <h5 class="card-title">Datos personales</h5>
+        <ul>
+          <li><strong>Tipo de usuario:</strong> {{ usuario.tipo |  tipousuario }}</li>
+          <li><strong>Email:</strong> {{usuario.email  }}</li>
+        </ul>
+        <form [formGroup]="ProfileForm" (ngSubmit)="GuardarMiCuenta()">
+          <div class="position-relative form-group">
+            <label for="exampleEmail">Nombre</label>
+            <input [formControl]="NombreControl" name="nombre" id="exampleEmail" placeholder="Complete con su nombre"
+              type="text" class="form-control" value="{{usuario.nombre}}" />
+            <div *ngIf="NombreInput.invalid && (NombreInput.dirty || NombreInput.touched)" class="alert alert-danger">
+              <div *ngIf="NombreInput.hasError('required')">Complete con un nombre </div>
+              <div *ngIf="NombreInput.hasError('minlength')">Debe tener al menos 4 caracteres</div>
+              <div *ngIf="NombreInput.hasError('maxlength')">Debe tener maximo 255 caracteres</div>
+            </div>
+          </div>
+          <button type="submit" class="mt-1 btn btn-primary" [disabled]="!ProfileForm.valid">Submit</button>
+        </form>
       </div>
     </div>
   </div>
-  <div class="col-xs-1"></div>
+  <div class="col-md-6">
+    <div class="main-card mb-3 card">
+      <div class="card-body">
+        <h5 class="card-title">Avatar</h5>
+          <img src="{{ usuario.profileImage }}" />
+          <form>
+            <div class="position-relative form-group">
+              <label for="exampleFile">Avatar</label>
+              <input name="avatar" id="exampleFile" type="file" class="form-control-file" accept=".png,.jpg"   (change)="DefinirAvatar($event)" />
+              <div class="progreso" *ngIf="this.sService.uploadPercent | async; let porcentaje ">
+                  <div *ngIf="porcentaje != 0 && porcentaje != 100">
+                    <progress max="100" [value]="(this.sService.uploadPercent | async)"></progress>
+                    <span> {{ porcentaje }}%</span>
+                  </div>
+                </div>
+              <small class="form-text text-muted">Selecciona tu imagen de perfil</small>
+            </div>
+          </form>
+      </div>
+      <div class="main-card mb-3 card"></div>
+    </div>
+  </div>
 </div>

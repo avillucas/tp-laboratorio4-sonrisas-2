@@ -28,6 +28,10 @@ export class TurnosComponent implements OnInit {
   private ocultarEncuestas: boolean;
   private turnoEncuestado: ITurnoId;
 
+  heading = 'Turnos';
+  subheading = 'Gestiona tus turnos';
+  icon = 'pe-7s-display1 icon-gradient bg-premium-dark';
+
   constructor(
     private tService: TurnosService,
     private uService: UsuariosService,

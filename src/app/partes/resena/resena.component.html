@@ -1,23 +1,17 @@
-<div class="register-box-body">
-  <p class="login-box-msg">Complete una breve reseña de los procedimientos realizados al paciente </p>
-
-  <form [formGroup]="ResenaForm" (ngSubmit)="Guardar()">
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="form-group has-feedback">
-          <label>Cuente en una breve reseña los procedimientos realizados</label>
-          <br/>
-          <textarea [formControl]="ResenaControl" name="resena" cols="70" rows="10" > </textarea>
-          <div *ngIf="ResenaInput.invalid && (ResenaInput.dirty || ResenaInput.touched)" class="alert alert-danger">
-            <div *ngIf="ResenaInput.hasError('required')">Complete con una reseña </div>
-            <div *ngIf="ResenaInput.hasError('minlength')">Debe tener al menos 4 caracteres</div>
-            <div *ngIf="ResenaInput.hasError('maxlength')">Debe tener maximo 255 caracteres</div>
-          </div>
+<div class="main-card mb-3 card">
+  <div class="card-body">
+    <h5 class="card-title">Complete una breve reseña de los procedimientos realizados al paciente</h5>
+    <form [formGroup]="ResenaForm" (ngSubmit)="Guardar()">
+      <div class="position-relative form-group">
+        <label for="exampleText">Cuente en una breve reseña los procedimientos realizados</label>
+        <textarea [formControl]="ResenaControl" name="resena" class="form-control"> </textarea>
+        <div *ngIf="ResenaInput.invalid && (ResenaInput.dirty || ResenaInput.touched)" class="alert alert-danger">
+          <div *ngIf="ResenaInput.hasError('required')">Complete con una reseña </div>
+          <div *ngIf="ResenaInput.hasError('minlength')">Debe tener al menos 4 caracteres</div>
+          <div *ngIf="ResenaInput.hasError('maxlength')">Debe tener maximo 255 caracteres</div>
         </div>
-        <button type="submit" class="btn btn-primary btn-block btn-flat" [disabled]="!ResenaForm.valid">Guardar Reseña</button>
       </div>
-    </div>
-  </form>
-
+      <button type="submit" class="mt-1 btn btn-primary" [disabled]="!ResenaForm.valid">Guardar Reseña</button>
+    </form>
+  </div>
 </div>
-

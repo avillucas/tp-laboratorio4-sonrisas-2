@@ -1,6 +1,6 @@
 <span [ngSwitch]="AccionDisponible">
-  <button *ngSwitchCase="'encuesta'" (click)="CompletarEncuesta(iturnoid)">Completar Encuesta</button>
-  <button *ngSwitchCase="'cancelar'" (click)="CancelarTurno(iturnoid)">Cancelar Turno</button>
-  <span *ngSwitchCase="'encuestado'" class="encuestado">Encuesta Completa</span>
-  <span *ngSwitchDefault class="noasistio">No Asistio</span>
+  <button *ngSwitchCase="'encuesta'" class="btn btn-primary btn-sm" (click)="CompletarEncuesta(iturnoid)">Completar Encuesta</button>
+  <button *ngSwitchCase="'cancelar'" class="btn btn-danger btn-sm" (click)="CancelarTurno(iturnoid)">Cancelar Turno</button>
+  <div *ngSwitchCase="'encuestado'" class="badge badge-success">Encuesta Completa</div>  
+  <div *ngSwitchDefault class="badge badge-danger">No asistio al turno</div>  
 </span>

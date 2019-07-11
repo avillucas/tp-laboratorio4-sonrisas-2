@@ -1,14 +1,11 @@
 <form [formGroup]="FiltroForm">
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="form-group ">
-        <label class=""><span class="glyphicon glyphicon-lock"></span>Fecha*</label>
-        <input type="date" name="diaConsultado" [formControl]="DiaConsultadoControl" required (change)="Filtrar()" />
-        <div *ngIf="DiaConsultadoInput.hasError('required')" class="alert alert-danger">
-          <div *ngIf="DiaConsultadoInput.hasError('required')">Debe seleccionar la fecha</div>
-        </div>
-      </div>
-      <!-- -->
+  <div class="position-relative form-group">
+    <label>Fecha*</label>
+    <input type="date" name="diaConsultado" [formControl]="DiaConsultadoControl" required (change)="Filtrar()"
+      class="form-control" />
+    <div *ngIf="DiaConsultadoInput.hasError('required')" class="alert alert-danger">
+      <div *ngIf="DiaConsultadoInput.hasError('required')">Debe seleccionar la fecha</div>
     </div>
   </div>
+  <!-- -->
 </form>
