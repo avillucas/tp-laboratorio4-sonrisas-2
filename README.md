@@ -18,6 +18,8 @@ Imágenes
 5- que el usuario pueda ver la reseña.
 6-Que el usuario puede cargar la encuesta de satisfacción.
 
+ng build --prod; cp -R dist/parcial2/* firebase/public/; cd firebase ; firebase deploy ;
+
 
 * Usuario
  - email : string 
